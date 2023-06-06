@@ -5,6 +5,6 @@ number = random.randint(-10, 10)
 if number < 0:
     print(number, 'is negative')
 if number == 0:
-    print(number, 'zero')
+    print(number, 'is zero')
 if number > 0:
     print(number, 'is positive')
