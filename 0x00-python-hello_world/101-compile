@@ -1,20 +1,3 @@
 #!/bin/bash
 
-pyfile=$PYFILE
-
-if [ -z "$pyfile" ]; then
-    echo "PYFILE environment variable is not set."
-else
-    name=$(basename $pyfile)
-
-    python3 -m py_compile $pyfile
-
-    compiled_file="__pycache__/$name.cpython-*.pyc"
-    mv $compiled_file .
-
-    new_name="${name%.*}.pyc"
-    mv $name.cpython-*.pyc $new_name
-
-    echo "Compiling $name..."
-fi
-
+python3 -m compileall -b  "$PYFILE"
