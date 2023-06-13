@@ -1,4 +1,5 @@
 #include "lists.h"
+
 /**
  * is_palindrome - checks if a single linked list is a palindrome
  *
@@ -23,24 +24,23 @@ int is_palindrome(listint_t **head)
 		count++;
 		ahead = ahead->next;
 	}
-	count++;
-	ahead = *head;
 
-	for (i = 1; i < count; i++)
+	for (i = 0; i < count / 2; i++)
 	{
-		j =1;
-		while (j <= count - i)
-		{
-			if (ahead->next != NULL)
-				ahead = ahead->next;
-			j++;
-		}
+		j = count - i - 1;
+		ahead = *head;
+		behind = *head;
+
+		for (int k = 0; k < i; k++)
+			ahead = ahead->next;
+
+		for (int k = 0; k < j; k++)
+			behind = behind->next;
+
 		if (ahead->n != behind->n)
 			return (0);
-
-		behind = behind->next;
-		ahead = *head;
 	}
 
 	return (1);
 }
+
