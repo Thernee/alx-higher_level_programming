@@ -6,7 +6,7 @@ def uniq_add(my_list=[]):
         result = 0
 
         for num in holder:
-            result += num
+            result += int(num)
         return result
 
     return my_list
