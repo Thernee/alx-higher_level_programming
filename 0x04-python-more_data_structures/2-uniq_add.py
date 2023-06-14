@@ -8,3 +8,5 @@ def uniq_add(my_list=[]):
         for num in holder:
             result += num
         return result
+
+    return my_list
