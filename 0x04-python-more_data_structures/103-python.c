@@ -40,7 +40,7 @@ void print_python_list(PyObject *p)
  */
 void print_python_bytes(PyObject *p)
 {
-	PyBytesObject *bytes = (PyBytesObject *)p;
+	/*PyBytesObject *bytes = (PyBytesObject *)p;*/
 	Py_ssize_t size, i, limit;
 	unsigned char *str;
 
