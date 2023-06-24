@@ -4,53 +4,52 @@ void print_python_list(PyObject *p);
 void print_python_bytes(PyObject *p);
 
 /**
- * print_python_list - Prints list information
- *
- * @p: Python Object
- * Return: no return
+ * print_python_list - Prints basic info about Python lists.
+ * @p: A PyObject list object.
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size, i;
-	PyObject *obj;
+	Py_ssize_t size, alloc, i;
+	const char *type;
+	PyListObject *list = (PyListObject *)p;
+	PyVarObject *var = (PyVarObject *)p;
 
-	size = PySequence_Length(p);
+	size = var->ob_size;
+	alloc = list->allocated;
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %zd\n", size);
-	printf("[*] Allocated = %zd\n", ((PyListObject *)p)->allocated);
+	printf("[*] Allocated = %zd\n", alloc);
 
 	for (i = 0; i < size; i++)
 	{
-		obj = PySequence_GetItem(p, i);
-		printf("Element %zd: %s\n", i, obj->ob_type->tp_name);
-		if (PyBytes_Check(obj))
-			print_python_bytes(obj);
-		Py_DECREF(obj);
+		type = list->ob_item[i]->ob_type->tp_name;
+		printf("Element %zd: %s\n", i, type);
+		if (strcmp(type, "bytes") == 0)
+			print_python_bytes(list->ob_item[i]);
 	}
 }
 
 /**
- * print_python_bytes - Prints information of python bytes
- *
- * @p: The Python Object to be worked on
- * Return: nothing
+ * print_python_bytes - Prints basic info about Python byte objects.
+ * @p: A PyObject byte object.
  */
 void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t size, i, limit;
 	unsigned char *str;
+	PyVarObject *var_obj = (PyVarObject *)p;
 
 	printf("[.] bytes object info\n");
 
-	if (!PyObject_IsInstance(p, (PyObject *)&PyBytes_Type))
+	if (strcmp(p->ob_type->tp_name, "bytes") != 0)
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = PyObject_Length(p);
-	str = (unsigned char *)((PyBytesObject *)p)->ob_sval;
+	size = var_obj->ob_size;
+	str = (unsigned char *)var_obj->ob_sval;
 
 	printf("  size: %zd\n", size);
 	printf("  trying string: %s\n", str);
@@ -60,7 +59,8 @@ void print_python_bytes(PyObject *p)
 	printf("  first %zd bytes:", limit);
 
 	for (i = 0; i < limit; i++)
-		printf(" %02x", str[i]);
+		printf(" %02hhx", str[i]);
 
 	printf("\n");
 }
+
