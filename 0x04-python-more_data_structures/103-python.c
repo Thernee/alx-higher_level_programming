@@ -12,7 +12,7 @@ void print_python_list(PyObject *p)
 	Py_ssize_t size, alloc, i;
 	const char *type;
 
-	size = PyList_Size(p);
+	size = PyObject_Length(p);
 	alloc = ((PyListObject *)p)->allocated;
 
 	printf("[*] Python list info\n");
@@ -21,10 +21,11 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		PyObject *item = PySequence_GetItem(p, i);
+		PyObject *item = PyList_GetItem(p, i);
 
 		type = item->ob_type->tp_name;
 		printf("Element %zd: %s\n", i, type);
+
 		if (strcmp(type, "bytes") == 0)
 			print_python_bytes(item);
 	}
@@ -41,14 +42,14 @@ void print_python_bytes(PyObject *p)
 
 	printf("[.] bytes object info\n");
 
-	if (!PyObject_IsInstance(p, (PyObject *)&PyBytes_Type))
+	if (!PyBytes_Check(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
 
-	size = PyBytes_Size(p);
-	str = (unsigned char *)PyBytes_AsString(p);
+	size = PyBytes_GET_SIZE(p);
+	str = (unsigned char *)PyBytes_AS_STRING(p);
 
 	printf("  size: %zd\n", size);
 	printf("  trying string: %s\n", str);
@@ -59,6 +60,9 @@ void print_python_bytes(PyObject *p)
 
 	for (i = 0; i < limit; i++)
 		printf(" %02x", str[i]);
+
+	if (size < 10)
+		printf(" 00");
 
 	printf("\n");
 }
