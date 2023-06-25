@@ -21,7 +21,7 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		PyObject *item = PyList_GetItem(p, i);
+		PyObject *item = PySequence_GetItem(p, i);
 
 		type = item->ob_type->tp_name;
 		printf("Element %zd: %s\n", i, type);
