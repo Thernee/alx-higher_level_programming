@@ -48,8 +48,8 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 
-	size = PyBytes_GET_SIZE(p);
-	str = (unsigned char *)PyBytes_AS_STRING(p);
+	size = PyString_Size(p);
+	str = (unsigned char *)PyString_AsString(p);
 
 	printf("  size: %zd\n", size);
 	printf("  trying string: %s\n", str);
