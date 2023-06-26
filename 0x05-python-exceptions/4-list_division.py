@@ -10,22 +10,22 @@ def list_division(my_list_1, my_list_2, list_length):
     for num in range(0, list_length):
         try:
             division = my_list_1[num] / my_list_2[num]
-        except IndexError:
-            index_err = 1
-            division = 0
         except ZeroDivisionError:
             division = 0
             zero_err = 1
-        except TypeError:
+        except (TypeError, ValueError):
             division = 0
             type_err = 1
+        except IndexError:
+            index_err = 1
+            division = 0
         finally:
             new_list.append(division)
     if zero_err == 1:
         print("division by 0")
-    if type_err == 1:
+    elif type_err == 1:
         print("wrong type")
-    if index_err == 1:
+    elif index_err == 1:
         print("out of range")
 
     return new_list
