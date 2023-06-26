@@ -4,7 +4,7 @@ def safe_print_integer(value):
 
     status = 0
     try:
-        print("{:d}".format(value))
+        print("{:d}".format(int(value)))
     except ValueError:
         status = 0
     else:
