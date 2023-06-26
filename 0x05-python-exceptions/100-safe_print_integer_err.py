@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from sys import stderr
 
+
 def safe_print_integer_err(value):
 
     try:
@@ -9,4 +10,3 @@ def safe_print_integer_err(value):
     except (TypeError, ValueError) as err:
         print("Exception: {}".format(err), file=stderr)
         return (False)
-
