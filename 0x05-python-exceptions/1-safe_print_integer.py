@@ -2,9 +2,15 @@
 
 def safe_print_integer(value):
 
+    status = 0
     try:
         print("{:d}".format(value))
     except ValueError:
-        return False
+        status = 0
     else:
-        True
+        status = 1
+
+    if status == 1:
+        return True
+    elif status == 0:
+        return False
