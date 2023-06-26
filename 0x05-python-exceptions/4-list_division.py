@@ -6,6 +6,7 @@ def list_division(my_list_1, my_list_2, list_length):
     type_err = 0
     index_err = 0
     zero_err = 0
+    division = 0
 
     for num in range(0, list_length):
         try:
@@ -13,7 +14,7 @@ def list_division(my_list_1, my_list_2, list_length):
         except ZeroDivisionError:
             division = 0
             zero_err = 1
-        except (TypeError, ValueError):
+        except TypeError:
             division = 0
             type_err = 1
         except IndexError:
