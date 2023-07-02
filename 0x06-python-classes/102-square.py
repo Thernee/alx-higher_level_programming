@@ -6,13 +6,12 @@
 class Square:
     """ This is an empty square class """
 
-    def __init__(self, size=0, position=(0, 0)):
+    def __init__(self, size=0):
         """ Initializes the square
         Args:
             size (int): Given size of the square
         """
         self.size = size
-        self.position = position
 
     @property
     def size(self):
@@ -32,36 +31,42 @@ class Square:
             if self.__size < 0:
                 raise ValueError("size must be >= 0")
 
-    @property
-    def position(self):
-        """ retrieves current position value"""
-        return self.__position
-
-    @position.setter
-    def position(self, value):
-        """ sets the value for position"""
-        if not isinstance(value, tuple) or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if value[0] < 0 or value[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not isinstance(value[0], int) or not isinstance(value[1], int):
-            raise TypeError("position must be a tuple of 2 positive integers")
-
-        self.__position = value
-
     def area(self):
         """ Returns the current square area """
         return self.__size * self.__size
 
-    def my_print(self):
-        """Prints a representation of the square."""
-        if self.size == 0:
-            print()
-            return
+    def __eq__(self, other):
+        """ Implements the == operator """
+        if isinstance(other, Square):
+            return self.area() == other.area()
+        return NotImplemented
 
-        for _ in range(self.__position[1]):
-            print()
+    def __ne__(self, other):
+        """ Implements the != operator """
+        if isinstance(other, Square):
+            return self.area() != other.area()
+        return NotImplemented
 
-        row = ' ' * self.__position[0] + '#' * self.size
-        for _ in range(self.size):
-            print(row)
+    def __lt__(self, other):
+        """ Implements the < operator """
+        if isinstance(other, Square):
+            return self.area() < other.area()
+        return NotImplemented
+
+    def __le__(self, other):
+        """ Implements the <= operator """
+        if isinstance(other, Square):
+            return self.area() <= other.area()
+        return NotImplemented
+
+    def __gt__(self, other):
+        """ Implements the > operator """
+        if isinstance(other, Square):
+            return self.area() > other.area()
+        return NotImplemented
+
+    def __ge__(self, other):
+        """ Implements the >= operator """
+        if isinstance(other, Square):
+            return self.area() >= other.area()
+        return NotImplemented
