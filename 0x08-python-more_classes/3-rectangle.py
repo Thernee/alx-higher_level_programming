@@ -70,4 +70,4 @@ class Rectangle:
                     holder += "#"
                     temp -= 1
                 holder += "\n"
-        return holder
+        return holder.rstrip()
