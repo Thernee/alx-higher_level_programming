@@ -13,6 +13,9 @@ Empty checks:
 	>>> print(my_list)
 	[]
 
+	>>> my_list.print_sorted()
+	[]
+
 Testing appended input:
 
 	>>> my_list = MyList()
