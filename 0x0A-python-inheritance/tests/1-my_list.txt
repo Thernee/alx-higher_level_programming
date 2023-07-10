@@ -33,3 +33,7 @@ Testing appended input:
 	>>> print(my_list)
 	[1, 5, 10, 4]
 
+	>>> my_list.append("test string")
+	>>> print(my_list)
+	[1, 5, 10, 4, 'test string']
+
