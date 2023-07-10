@@ -1,0 +1,27 @@
+
+Test cases for 1-my_list
+
+>>> MyList = __import__('1-my_list').MyList
+
+Initialization and check if instance is subclass
+
+	>>> my_list = MyList()
+	>>> isinstance(my_list, list)
+	True
+
+Empty checks:
+	>>> print(my_list)
+	[]
+
+Testing appended input:
+
+	>>> my_list = MyList()
+	>>> my_list.append(1)
+	>>> my_list.append(5)
+	>>> my_list.append(3)
+	>>> print(my_list)
+	[1, 5, 3]
+
+	>>> my_list.print_sorted()
+	[1, 3, 5]
+
