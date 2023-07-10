@@ -1,0 +1,62 @@
+
+Test cases for 7-base_geometry
+
+>>> Bg = __import__('7-base_geometry').BaseGeometry
+
+Testing Docstring:
+	>>> l = __import__("7-base_geometry").BaseGeometry.__doc__
+	>>> len(l) > 1
+	True
+
+	>>> l2 = __import__("7-base_geometry").__doc__
+	>>> len(l2) > 1
+	True
+
+	>>> l3 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> len(l3) > 1
+	True
+
+Initialization and check:
+
+area() test:
+
+	>>> bg = Bg()
+	>>> bg.area()
+	Traceback (most recent call last):
+	...
+	Exception: area() is not implemented
+
+	>>> bg.area(1)
+	Traceback (most recent call last):
+	...
+	TypeError: area() takes 1 positional argument but 2 were given
+
+integer_validator tests:
+	>>> bg.integer_validator()
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+	>>> bg.integer_validator("int")
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+	>>> bg.integer_validator("integer", 30, 100)
+	Traceback (most recent call last):
+	...
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
+	>>> bg.integer_validator("integer", 0)
+	Traceback (most recent call last):
+	...
+	ValueError: integer must be greater than 0
+
+	>>> bg.integer_validator("integer", -3)
+	Traceback (most recent call last):
+	...
+	ValueError: integer must be greater than 0
+
+	>>> bg.integer_validator("bool", True)
+	Traceback (most recent call last):
+	...
+	TypeError: bool must be an integer
