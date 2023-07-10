@@ -37,3 +37,11 @@ Testing appended input:
 	>>> print(my_list)
 	[1, 5, 10, 4, 'test string']
 
+
+Testing passed input:
+	>>> my_list = MyList([1, 2, 5, 4])
+	>>> print(my_list)
+	[1, 2, 5, 4]
+
+	>>> my_list.print_sorted()
+	[1, 2, 4, 5]
