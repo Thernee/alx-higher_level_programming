@@ -16,6 +16,10 @@ Testing Docstring:
 	>>> len(l3) > 1
 	True
 
+	>>> l4 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+	>>> len(l4) > 1
+	True
+
 Initialization and check:
 
 area() test:
