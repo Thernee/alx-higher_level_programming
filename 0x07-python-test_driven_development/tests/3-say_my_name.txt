@@ -1,0 +1,50 @@
+
+Importing function:
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Checking documentation:
+	>>> doc1 = __import__('3-say_my_name').__doc__
+	>>> doc2 = __import__('3-say_my_name').say_my_name.__doc__
+
+	>>> len(doc1) > 1
+	True
+
+	>>> len(doc2) > 1
+	True
+
+
+Checking amount of arguments passed:
+	>>> say_my_name()
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+	>>> say_my_name(None)
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+	>>> say_my_name("first name", "other name", "last anme")
+	Traceback (most recent call last):
+	...
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+
+
+checking incorrect input;
+	>>> say_my_name(30, 30)
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+	>>> say_my_name("first name", 123)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+checking correct input:
+	>>> say_my_name("first name", "last name")
+	My name is first name last name
+
+	>>> say_my_name("Abubakar")
+	My name is Abubakar 
