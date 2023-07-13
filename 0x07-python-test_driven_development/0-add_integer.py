@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
 """
 Define add_integer function
 Takes 2 arguments (a and b)
 Returns: a + b
 """
+
 
 def add_integer(a, b=98):
     """
