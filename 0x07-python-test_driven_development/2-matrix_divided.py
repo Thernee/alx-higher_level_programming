@@ -12,7 +12,7 @@ def matrix_divided(matrix, div):
     Divide elements of a matrix
     """
     if type(div) not in (int, float):
-        raise TypeError("div must be an integer")
+        raise TypeError("div must be a number")
     elif div == 0:
         raise ZeroDivisionError("division by zero")
 

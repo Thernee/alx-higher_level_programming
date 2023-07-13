@@ -68,12 +68,12 @@ checking incorrect input;
 
 	>>> matrix_divided(None, "string")
 	Traceback (most recent call last):
-	TypeError: div must be an integer
+	TypeError: div must be a number
 
 	>>> matrix_divided("string", "string")
 	Traceback (most recent call last):
 	...
-	TypeError: div must be an integer
+	TypeError: div must be a number
 
 
 
