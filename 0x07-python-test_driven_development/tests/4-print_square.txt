@@ -1,0 +1,91 @@
+
+Importing the module:
+>>> print_square = __import__('4-print_square').print_square
+
+Testing documentation:
+	>>> doc1 = __import__('4-print_square').__doc__
+	>>> doc2 = __import__('4-print_square').print_square.__doc__
+
+	>>> len(doc1) > 1
+	True
+
+	>>> len(doc2) > 1
+	True
+
+checking number of arguments:
+	>>> print_square()
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() missing 1 required positional argument: 'size'
+
+	>>> print_square(13, 25)
+	Traceback (most recent call last):
+	...
+	TypeError: print_square() takes 1 positional argument but 2 were given
+
+
+checking incorrect arguments:
+	>>> print_square(None)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square("string")
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square(10.7)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square("string")
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square(-10.7)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be an integer
+
+	>>> print_square(-5)
+	Traceback (most recent call last):
+	...
+	TypeError: size must be >= 0
+
+checking correct input:
+	>>> print_square(0)
+	<BLANKLINE>
+
+	 >>> print_square(1)
+	 #
+
+	 >>> print_square(4)
+	 ####
+	 ####
+	 ####
+	 ####
+
+	 >>> print_square(8)
+	 ########
+	 ########
+	 ########
+	 ########
+	 ########
+	 ########
+	 ########
+	 ########
+
+	 >>> print_square(10)
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########
+	 ##########

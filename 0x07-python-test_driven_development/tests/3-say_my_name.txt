@@ -47,4 +47,4 @@ checking correct input:
 	My name is first name last name
 
 	>>> say_my_name("Abubakar")
-	My name is Abubakar 
+	My name is Abubakar
