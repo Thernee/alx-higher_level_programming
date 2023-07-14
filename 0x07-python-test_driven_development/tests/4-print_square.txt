@@ -57,7 +57,6 @@ checking incorrect arguments:
 
 checking correct input:
 	>>> print_square(0)
-	<BLANKLINE>
 
 	 >>> print_square(1)
 	 #
