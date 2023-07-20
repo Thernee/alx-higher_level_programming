@@ -40,7 +40,7 @@ class Rectangle(Base):
         """Return x position of rectangle class"""
         return self.__x
 
-    @width.setter
+    @x.setter
     def x(self, value):
         """Set x position of rectangle class"""
         self.__x = value
@@ -50,7 +50,7 @@ class Rectangle(Base):
         """Return y position of rectangle class"""
         return self.__y
 
-    @width.setter
+    @y.setter
     def y(self, value):
         """Set y position of rectangle class"""
         self.__y = value
