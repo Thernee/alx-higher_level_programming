@@ -5,6 +5,7 @@
    A base class for all classes in the project
    Takes 1 argument (id)
 """
+import json
 
 
 class Base():
@@ -18,3 +19,11 @@ class Base():
             self.id = type(self).__nb_objects
         else:
             self.id = id
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ Return JSON string representation of dicts"""
+        if list_dictionaries is None or not list_dictionaries:
+            return "[]"
+
+        return json.dumps(list_dictionaries)
