@@ -35,19 +35,19 @@ def matrix_mul(m_a, m_b):
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    invert_val = []
+    transposed_m_b = []
     for row in range(len(m_b[0])):
         new_row = []
         for col in range(len(m_b)):
             new_row.append(m_b[col][row])
-        invert_val.append(new_row)
+        transposed_m_b.append(new_row)
 
     new_matrix = []
     for row in m_a:
         new_row = []
-        for col in invert_val:
+        for col in transposed_m_b:
             product = 0
-            for x in range(len(invert_val[0])):
+            for x in range(len(transposed_m_b[0])):
                 product += row[x] * col[x]
             new_row.append(product)
         new_matrix.append(new_row)
