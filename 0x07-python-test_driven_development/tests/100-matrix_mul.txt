@@ -70,7 +70,7 @@ Testing correct input:
 	>>> matrix_mul(a, b)
 	Traceback (most recent call last):
 	...
-	TypeError: can't multiply sequence by non-int of type 'float'
+	TypeError: m_b should contain only integers or floats
 
 	>>> a = [[1, 2.456],[2, 3], [1]]
 	>>> b = [[1, 2],[2, 3]]
