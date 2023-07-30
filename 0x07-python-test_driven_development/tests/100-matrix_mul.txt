@@ -1,6 +1,40 @@
 
 	>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
 
+Testing empty arguments:
+	>>> print(matrix_mul())
+    	Traceback (most recent call last):
+	...
+    	TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+	>>> a = 30
+	>>> matrix_mul(a)
+    	Traceback (most recent call last):
+	...
+	matrix_mul() missing 1 required positional argument: 'm_b'
+
+Testing incorrect lists:
+	>>> print(matrix_mul([1, 2], [[3, 4]]))
+    	Traceback (most recent call last):
+	...
+    	TypeError: m_a must be a list of lists
+
+	>>> print(matrix_mul([[1, 2]], [3, 4]))
+    	Traceback (most recent call last):
+	...
+    	TypeError: m_b must be a list of lists
+
+	>>> print(matrix_mul([[1, "string"]], [[3, 4]]))
+    	Traceback (most recent call last):
+	...
+    	TypeError: m_a should contain only integers or floats
+
+	>> print(matrix_mul([[1, 2]], [[{"a": 1}, 8.8]]))
+    	Traceback (most recent call last):
+	...
+    	TypeError: m_b should contain only integers or floats
+
+
 Testing correct input:
 	>>> a = [[3, 2, 1, 5], [9, 1, 3, 0]]
 	>>> b = [[2, 9, 0], [1, 3, 5], [2, 4, 7], [8, 1, 5]]
