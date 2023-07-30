@@ -11,7 +11,7 @@ Testing empty arguments:
 	>>> matrix_mul(a)
     	Traceback (most recent call last):
 	...
-	matrix_mul() missing 1 required positional argument: 'm_b'
+	TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
 
 Testing incorrect lists:
 	>>> print(matrix_mul([1, 2], [[3, 4]]))
