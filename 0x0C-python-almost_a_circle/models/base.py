@@ -6,6 +6,8 @@
    Takes 1 argument (id)
 """
 import json
+import csv
+import turtle
 
 
 class Base():
@@ -71,3 +73,34 @@ class Base():
             return []
 
         return obj
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Create a csv file from list of objects"""
+        with open(cls.__name__ + ".csv", "w", newline="") as f:
+            if list_objs is None or list_objs == []:
+                f.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Converts csv file to list of instances"""
+        try:
+            with open(cls.__name__ + ".csv", "r", newline="") as f:
+                if cls.__name__ == "Rectangle":
+                    names = ["id", "width", "height", "x", "y"]
+                else:
+                    names = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(f, names=names)
+                list_dicts = [dict([key, int(val)] for key, val in d.items())
+                              for dict in list_dicts]
+                return [cls.create(**dict) for dict in list_dicts]
+        except IOError:
+            return []
