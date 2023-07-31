@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
     Doc for the base class 'Base' -
     A base class for all classes in the project
@@ -62,9 +61,6 @@ class Base:
                 return [cls.create(**elem) for elem in data_list]
         except IOError:
             return []
-
-    def to_dictionary(self):
-        raise NotImplementedError("Subclasses must implement this method.")
 
     def save_to_file_csv(cls, list_objs):
         """Create a csv file from list of objects"""
