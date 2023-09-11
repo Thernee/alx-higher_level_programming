@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-let input = process.argv;
-function add(a, b) {
+const input = process.argv;
+function add (a, b) {
   console.log(a + b);
 }
 
