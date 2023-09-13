@@ -3,23 +3,13 @@
 const Sqr = require('./5-square');
 
 class Square extends Sqr {
-  constructor (size) {
-    super(size, size);
-    this.size = size;
-  }
-
-  // double () {
-  //   this.width = (this.size * 2);
-  //   this.height = (this.size * 2);
-  // }
-
   charPrint (c) {
     if (c === undefined) this.print();
 
     else {
-      let height = this.size;
+      let height = this.height;
       while (height > 0) {
-        let temp = this.size;
+        let temp = this.width;
         let row = '';
         while (temp > 0) {
           row += c;
