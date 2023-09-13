@@ -13,7 +13,9 @@ class Square extends Rectangle {
     this.height = (this.size * 2);
   }
 
-  charPrint (c = 'X') {
+  charPrint (c) {
+    if (c === undefined) c = 'X';
+
     let height = this.size;
     while (height > 0) {
       let temp = this.size;
