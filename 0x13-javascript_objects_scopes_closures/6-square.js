@@ -14,18 +14,20 @@ class Square extends Sqr {
   }
 
   charPrint (c) {
-    if (c === undefined) c = 'X';
+    if (c === undefined) this.print();
 
-    let height = this.size;
-    while (height > 0) {
-      let temp = this.size;
-      let row = '';
-      while (temp > 0) {
-        row += c;
-        temp--;
+    else {
+      let height = this.size;
+      while (height > 0) {
+        let temp = this.size;
+        let row = '';
+        while (temp > 0) {
+          row += c;
+          temp--;
+        }
+        console.log(row);
+        height--;
       }
-      console.log(row);
-      height--;
     }
   }
 }
