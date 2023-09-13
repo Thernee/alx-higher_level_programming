@@ -8,10 +8,10 @@ class Square extends Sqr {
     this.size = size;
   }
 
-  double () {
-    this.width = (this.size * 2);
-    this.height = (this.size * 2);
-  }
+  // double () {
+  //   this.width = (this.size * 2);
+  //   this.height = (this.size * 2);
+  // }
 
   charPrint (c) {
     if (c === undefined) this.print();
