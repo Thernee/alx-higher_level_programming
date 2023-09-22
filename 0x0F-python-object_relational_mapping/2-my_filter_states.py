@@ -14,7 +14,8 @@ if __name__ == "__main__":
     states = cursor.fetchall()
 
     for state in states:
-        print(state)
+        if state[1] == argv[4]:
+            print(state)
 
     cursor.close()
     db.close()
