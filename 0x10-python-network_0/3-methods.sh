@@ -1,3 +1,3 @@
 #!/bin/bash
-# Queries a URL passed to the script with a OPTIONS request and displays the body of the response
-curl -sX OPTIONS "$1"
+# Takes in a URL and displays all HTTP methods the server will accept
+curl -sI "$1" | awk -F ': ' '/^Allow:/ {print $2; exit}'
