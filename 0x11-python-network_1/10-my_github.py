@@ -1,20 +1,15 @@
 #!/usr/bin/python3
 
-"""sends request to a URL and displays body of the response, or error"""
+"""Takes Github credentials and give id"""
 import requests
+from requests.auth import HTTPBasicAuth
 from sys import argv
 
 if __name__ == "__main__":
-    if argv[1]:
-        q = {'q': argv[1]}
-    else:
-        q = {'q': ""}
-    req = requests.post('http://0.0.0.0:5000/search_user', data=q)
+    credentials = HTTPBasicAuth(argv[1], argv[2])
+    req = requests.get('https://api.github.com/user', auth=credentials)
     try:
-        jason_dict = req.json()
-        if json_dict:
-            print(f"[{json_dict['id']}] {json_dict['name']}")
-        else:
-            print("No result")
+        json_dict = req.json()
+        print(f"{json_dict.get('id')}")
     except ValueError:
-        print("Not a valid JSON")
+        pass
