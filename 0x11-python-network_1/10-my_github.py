@@ -5,13 +5,13 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    if len(argv) > 1:
+    if argv[1]:
         q = {'q': argv[1]}
     else:
         q = {'q': ""}
     req = requests.post('http://0.0.0.0:5000/search_user', data=q)
     try:
-        json_dict = req.json()
+        jason_dict = req.json()
         if json_dict:
             print(f"[{json_dict['id']}] {json_dict['name']}")
         else:
