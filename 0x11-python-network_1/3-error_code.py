@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""Uses urllib to fetch https://alx-intranet.hbtn.io/status."""
+"""Uses urllib to send a request to a url and capture the HTTP error codes"""
 import urllib.request
 from sys import argv
 
